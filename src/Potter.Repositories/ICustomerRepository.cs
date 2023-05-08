@@ -1,15 +1,12 @@
-﻿namespace Potter.Repositories;
+﻿using Potter.Domain.Entities;
+
+namespace Potter.Repositories;
 
 public interface ICustomerRepository
 {
-}
-
-public class CustomerRepository : ICustomerRepository
-{
-    private PotterDbContext _potterDbContext;
-
-    public CustomerRepository(PotterDbContext potterDbContext)
-    {
-        _potterDbContext = potterDbContext;
-    }
+    Task<Guid> AddEntityAsync(Customer customer);
+    Task DeleteEntityAsync(Guid id);
+    Task UpdateEntityAsync(Customer customer);
+    Task<Customer> GetEntityByIdAsync(Guid id);
+    Task<IEnumerable<Customer>> GetAllActiveCustomersAsync(DateTimeOffset expirationDate);
 }

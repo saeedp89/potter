@@ -1,8 +1,33 @@
-﻿@{
+﻿@model IEnumerable<Potter.Application.CustomerDto>
+@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<table style="width: 100%">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>password</th>
+        <th>server</th>
+        <th>expiration date</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Username</td>    
+            <td>@c.Password</td>
+            <td>@c.Server</td>
+            <td>@c.ExpirationDate.Value.ToString("d")</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<button>
+    <a href="/customers/add">Add</a>
+</button>

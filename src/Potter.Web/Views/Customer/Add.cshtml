@@ -1,0 +1,31 @@
+﻿@model Potter.Application.CustomerDto
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<form asp-controller="Customer" asp-action="Add">
+    <div>
+        <label asp-for="Username"></label>
+        <input type="text" asp-for="Username">
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input type="password" asp-for="Password">
+    </div>
+    <div>
+        <label asp-for="Server"></label>
+        <input type="text" asp-for="Server">
+    </div>
+    <div>
+        <label asp-for="ExpirationDate"></label>
+        <input type="date" asp-for="ExpirationDate">
+    </div>
+    
+    <div>
+        <label asp-for="LastPaidDate"></label>
+        <input type="date" asp-for="LastPaidDate">
+    </div>
+    <input type="submit">
+</form>

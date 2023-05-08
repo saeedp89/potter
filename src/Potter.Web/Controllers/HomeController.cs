@@ -17,10 +17,11 @@ public class HomeController : Controller
         _customerService = customerService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var customers = new List<Customer>();
-        return View();
+        var customers = await _customerService
+            .GetAllActiveUsers(DateTimeOffset.Now);
+        return View(model: customers);
     }
 
     public IActionResult Privacy()
@@ -33,4 +34,5 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
 }
